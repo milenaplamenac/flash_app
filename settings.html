@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div class="row">
+        <div id="main" class="col s12 m6 l4 offset-m3 offset-l4">
+            <nav>
+                <div class="nav-wrapper">
+
+                    <a href="#" class="brand-logo  sidenav-trigger" data-target="slide-out">
+                        <i class="material-icons" id="mobile-menu-icon">menu</i>
+                    </a>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i
+                                    class="material-icons">menu</i></a></li>
+                        <li><a id="index_button" id="logout-button">Početna</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="settings">
+                <div class="container">
+                    <h5>Generalna podešavanja</h5>
+                    <hr>
+                    <a href="#">Promijeni jezik</a>
+
+                    <h5>Lična podešavanja</h5>
+                    <hr>
+                    <a href="#">Profil</a><br>
+                    <a href="#">Podesi prečice</a>
+
+                    <h5>Sigurnosna podešavanja</h5>
+                    <hr>
+                    <a href="#">Promijeni PIN</a><br>
+                    <a href="#">Odjavi uređaj</a>
+
+                    <br><br><br>
+
+                    <h5 style="font-weight: bold;">FLASH usluga</h5>
+                    <hr>
+
+                    <div id="flash_inactive">
+                        <span class="new badge red" data-badge-caption="Neaktivna"></span><a
+                            class="waves-effect waves-light btn" id="activate_flash">Aktiviraj FLASH</a>
+                    </div>
+
+                    <div id="flash_active">
+                        <span class="new badge green" data-badge-caption="Aktivna"></span><a
+                            class="waves-effect waves-light btn" id="deactivate_flash">Deaktiviraj Flash</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script type="text/javascript" src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+
+        var urlParams = new URLSearchParams(window.location.search);
+
+        var flash_activated;
+
+        if (urlParams.has('flash_activated'))
+            var flash_activated = urlParams.get('flash_activated');
+        else
+            flash_activated = false;
+
+        if (flash_activated == 'true') {
+            $("#flash_active").show();
+            $("#flash_inactive").hide();
+        }
+        else {
+            $("#flash_inactive").show();
+            $("#flash_active").hide();
+        }
+
+        var a = document.getElementById('index_button');
+        a.href = "index.html?flash_activated=" + flash_activated;
+
+        $("#activate_flash").on("click", () => {
+            flash_activated = true;
+            var a = document.getElementById('index_button');
+            a.href = "index.html?flash_activated=" + flash_activated;
+            $("#flash_active").show();
+            $("#flash_inactive").hide();
+            M.toast({ html: 'FLASH je aktiviran!' });
+        });
+
+        $("#deactivate_flash").on("click", () => {
+            flash_activated = false;
+            var a = document.getElementById('index_button');
+            a.href = "index.html?flash_activated=" + flash_activated;
+            $("#flash_active").hide();
+            $("#flash_inactive").show();
+            M.toast({ html: 'FLASH je deaktiviran!' });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

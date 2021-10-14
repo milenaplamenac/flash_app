@@ -1,0 +1,41 @@
+#main {
+    /* width: 30%;
+    height: 100vh;
+    margin: auto; */
+    border: 2px solid whitesmoke;
+}
+
+#profile {
+    background-color: whitesmoke;
+    color: gray;
+    padding: 1.5rem;
+}
+
+#recentTransactions,
+#flash,
+#contacts,
+#settings {
+    color: gray;
+    padding: 1.5rem;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.confirmed {
+    color: green;
+}
+
+.pending {
+    color: orange;
+}
+
+nav {
+    background-color: gray;
+}
+
+.modal {
+    max-width: 350px;
+}
